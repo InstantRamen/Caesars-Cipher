@@ -13,19 +13,31 @@ text = gets.chomp
 
 puts "What key would you like to use?"
 key = gets.chomp
-while !key.is_int
+until key.is_int
   puts "Please enter an integer!"
   key = gets.chomp
 end
+
+
 def ceasars_cipher(string_to_cipher, key)
   result = ""
+  # string_to_cipher.scan(/./) do |letter|
+  #   if letter.is_alpha then
+  #     result += letter.next
+  #   else
+  #     result += letter
+  #   end
+  # end
   string_to_cipher.scan(/./) do |letter|
-    if letter.is_alpha then
-      result += letter.next
-    else
-      result += letter
+    letter_result = letter
+    key.to_i.times do |i|
+      if letter.is_alpha then
+        letter_result = letter_result.next
+      else
+        letter_result = letter
+      end
     end
-
+    result += letter_result
   end
   return result
 end
