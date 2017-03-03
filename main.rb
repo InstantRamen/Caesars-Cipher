@@ -25,7 +25,13 @@ def ceasars_cipher(string_to_cipher, key)
     letter_result = letter
     key.to_i.times do |i|
       if letter.is_alpha then
-        letter_result = letter_result.next
+        if letter_result == "z" then
+          letter_result = "a"
+        elsif letter_result == "Z" then
+          letter_result = "A"
+        else
+          letter_result = letter_result.next
+        end
       else
         letter_result = letter
       end
