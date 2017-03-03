@@ -21,13 +21,6 @@ end
 
 def ceasars_cipher(string_to_cipher, key)
   result = ""
-  # string_to_cipher.scan(/./) do |letter|
-  #   if letter.is_alpha then
-  #     result += letter.next
-  #   else
-  #     result += letter
-  #   end
-  # end
   string_to_cipher.scan(/./) do |letter|
     letter_result = letter
     key.to_i.times do |i|
