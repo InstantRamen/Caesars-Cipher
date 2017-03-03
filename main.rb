@@ -2,11 +2,21 @@ class String
   def is_alpha
     return self.match(/^[[:alpha:]]$/) != nil
   end
+  def is_int
+    return self.match(/^\d+$/) != nil
+  end
 end
 
+puts "What would you like to cipher?"
+text = gets.chomp
 
-my_key = 1
-text = "abc. defg- "
+
+puts "What key would you like to use?"
+key = gets.chomp
+while !key.is_int
+  puts "Please enter an integer!"
+  key = gets.chomp
+end
 def ceasars_cipher(string_to_cipher, key)
   result = ""
   string_to_cipher.scan(/./) do |letter|
@@ -17,8 +27,8 @@ def ceasars_cipher(string_to_cipher, key)
     end
 
   end
-  puts result
+  return result
 end
 
- ceasars_cipher(text, my_key)
+puts ceasars_cipher(text, key)
 
