@@ -20,7 +20,7 @@ class CaesarsCipher
 
   def cipher(string_to_cipher, key)
     result = ""
-    string_to_cipher.scan(/./) do |letter|
+    string_to_cipher.scan(/./) do |letter| # for each letter in the string
       letter_result = letter
       key.to_i.times do |i|
         if letter.is_alpha then

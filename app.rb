@@ -1,14 +1,17 @@
 require_relative 'caesars_cipher'
+require "sinatra/base"
 
-puts "What would you like to cipher?"
-text = gets.chomp
+class App < Sinatra::Base
+  @text_to_cipher
 
+  get '/' do 
+    erb (:index)
+  end
 
-puts "What key would you like to use?"
-key = gets.chomp
-until key.is_int
-  puts "Please enter an integer!"
-  key = gets.chomp
+  post "/results" do 
+    result = CaesarsCipher.new(params[:text], params[:key]).to_s
+    erb :results, locals: {result: result}
+  end
+
+  run!
 end
-
-puts CaesarsCipher.new(text, key).to_s
